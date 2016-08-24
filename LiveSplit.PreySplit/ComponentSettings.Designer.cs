@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.SplitOnMapChangeCheckbox = new System.Windows.Forms.CheckBox();
             this.SplitOnMapsCheckbox = new System.Windows.Forms.CheckBox();
             this.EnableAutoSplitCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -43,6 +44,20 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitOnMapsList)).BeginInit();
             this.SuspendLayout();
+            // 
+            // SplitOnMapChangeCheckbox
+            // 
+            this.SplitOnMapChangeCheckbox.AutoSize = true;
+            this.SplitOnMapChangeCheckbox.BackColor = System.Drawing.SystemColors.Control;
+            this.SplitOnMapChangeCheckbox.Checked = true;
+            this.SplitOnMapChangeCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SplitOnMapChangeCheckbox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.SplitOnMapChangeCheckbox.Location = new System.Drawing.Point(6, 75);
+            this.SplitOnMapChangeCheckbox.Name = "SplitOnMapChangeCheckbox";
+            this.SplitOnMapChangeCheckbox.Size = new System.Drawing.Size(147, 17);
+            this.SplitOnMapChangeCheckbox.TabIndex = 0;
+            this.SplitOnMapChangeCheckbox.Text = "Split on all Chapters";
+            this.SplitOnMapChangeCheckbox.UseVisualStyleBackColor = false;
             // 
             // SplitOnMapsCheckbox
             // 
@@ -72,6 +87,7 @@
             this.groupBox1.Controls.Add(this.SplitOnMapsList);
             this.groupBox1.Controls.Add(this.EnableAutoSplitCheckbox);
             this.groupBox1.Controls.Add(this.SplitOnMapsCheckbox);
+            this.groupBox1.Controls.Add(this.SplitOnMapChangeCheckbox);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(209, 335);
@@ -184,6 +200,7 @@
 
         #endregion
 
+        private System.Windows.Forms.CheckBox SplitOnMapChangeCheckbox;
         private System.Windows.Forms.CheckBox SplitOnMapsCheckbox;
         private EditableListBox SplitOnMapsList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Maps;

@@ -19,7 +19,7 @@ namespace LiveSplit.PreySplit
             "feedingtowera.map", // Escape Velocity
             "feedingtowerb.map", // Downward Spiral
             "lotaa.map", // Rites of Passage
-            "feedingtowerc.map", // Seconds Chances
+            "feedingtowerc.map", // Second Chances
             "feedingtowerd.map", // All Fall Down
             "salvage.map", // Crash Landing
             "salvageboss.map", // Sacrifices
@@ -49,6 +49,7 @@ namespace LiveSplit.PreySplit
             EnableAutoSplitCheckbox.Checked = false;
             SplitOnGameEndCheckbox.Checked = true;
             SplitOnMapsCheckbox.Checked = true;
+            SplitOnMapChangeCheckbox.Checked = true;
             SplitOnMapsList.Rows.Clear();
 
             EnableAutoResetCheckbox.Checked = true;
@@ -69,6 +70,7 @@ namespace LiveSplit.PreySplit
             AppendElement(document, settingsNode, "Version", Assembly.GetExecutingAssembly().GetName().Version);
 
             AppendElement(document, settingsNode, "EnableAutoSplit", EnableAutoSplitCheckbox.Checked);
+            AppendElement(document, settingsNode, "SplitOnMapChange", SplitOnMapChangeCheckbox.Checked);
             AppendElement(document, settingsNode, "SplitOnGameEnd", SplitOnGameEndCheckbox.Checked);
             AppendElement(document, settingsNode, "SplitOnMaps", SplitOnMapsCheckbox.Checked);
             AppendElement(document, settingsNode, "SplitOnMapsList", string.Join("|", SplitOnMapsList.GetValues()));
@@ -107,6 +109,7 @@ namespace LiveSplit.PreySplit
                 return;
 
             EnableAutoSplitCheckbox.Checked = FindSetting(settings, "EnableAutoSplit", EnableAutoSplitCheckbox.Checked);
+            SplitOnMapChangeCheckbox.Checked = FindSetting(settings, "SplitOnMapChange", SplitOnMapChangeCheckbox.Checked);
             SplitOnGameEndCheckbox.Checked = FindSetting(settings, "SplitOnGameEnd", SplitOnGameEndCheckbox.Checked);
             SplitOnMapsCheckbox.Checked = FindSetting(settings, "SplitOnMaps", SplitOnMapsCheckbox.Checked);
             var e = settings["SplitOnMapsList"];
@@ -124,6 +127,9 @@ namespace LiveSplit.PreySplit
         {
             if (!IsAutoSplitEnabled())
                 return false;
+
+            if (SplitOnMapChangeCheckbox.Checked && mapnames.Contains(map))
+                return true;
 
             if (SplitOnMapsCheckbox.Checked && SplitOnMapsList.GetValues().Contains(map))
                 return true;
@@ -157,11 +163,13 @@ namespace LiveSplit.PreySplit
             {
                 SplitOnGameEndCheckbox.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
                 SplitOnMapsCheckbox.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
+                SplitOnMapChangeCheckbox.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
             }
             else
             {
                 SplitOnGameEndCheckbox.ForeColor = Color.FromKnownColor(KnownColor.GrayText);
                 SplitOnMapsCheckbox.ForeColor = Color.FromKnownColor(KnownColor.GrayText);
+                SplitOnMapChangeCheckbox.ForeColor = Color.FromKnownColor(KnownColor.GrayText);
             }
         }
 

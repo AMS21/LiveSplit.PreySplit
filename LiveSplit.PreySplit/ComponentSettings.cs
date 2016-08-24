@@ -128,7 +128,7 @@ namespace LiveSplit.PreySplit
             if (!IsAutoSplitEnabled())
                 return false;
 
-            if (SplitOnMapChangeCheckbox.Checked && mapnames.Contains(map))
+            if (SplitOnMapChangeCheckbox.Checked /*&& mapnames.Contains(map)*/)
                 return true;
 
             if (SplitOnMapsCheckbox.Checked && SplitOnMapsList.GetValues().Contains(map))

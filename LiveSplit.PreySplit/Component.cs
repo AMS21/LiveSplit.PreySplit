@@ -70,7 +70,6 @@ namespace LiveSplit.PreySplit
         private List<IEvent> events = new List<IEvent>();
         private object eventsLock = new object();
         private HashSet<string> visitedMaps = new HashSet<string>();
-        private bool splitOnBSALeapOfFaith = false;
 
         private DateTime lastTime = DateTime.Now;
 
@@ -168,7 +167,6 @@ namespace LiveSplit.PreySplit
             }
 
             visitedMaps.Clear();
-            splitOnBSALeapOfFaith = false;
         }
 
         private TimeSpan ParseTime(byte[] buf, int offset)
